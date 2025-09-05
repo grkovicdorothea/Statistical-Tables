@@ -4,11 +4,11 @@ from scipy import stats
 
 st.title("Stats Tables")
 
-st.sidebar.header("Select Functionality")
-option = st.sidebar.selectbox(
+option = st.selectbox(
     "Choose calculation",
     ["Normal Distribution", "t-distribution", "Chi-squared distribution", "F-distribution", "Durbin-Watson statistic"]
 )
+
 if option == "Normal Distribution":
     st.header("Normal Distribution")
     mean = st.number_input("Mean (μ)", value=0.0)
