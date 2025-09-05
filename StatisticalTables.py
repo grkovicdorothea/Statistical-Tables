@@ -2,15 +2,13 @@ import streamlit as st
 import numpy as np
 from scipy import stats
 
-st.title("Statistical Tables Aoo")
+st.title("Stats Tables")
 
 st.sidebar.header("Select Functionality")
 option = st.sidebar.selectbox(
     "Choose calculation",
     ["Normal Distribution", "t-distribution", "Chi-squared distribution", "F-distribution", "Durbin-Watson statistic"]
 )
-
-# ---------------- Normal Distribution ----------------
 if option == "Normal Distribution":
     st.header("Normal Distribution")
     mean = st.number_input("Mean (μ)", value=0.0)
@@ -26,7 +24,6 @@ if option == "Normal Distribution":
             crit = stats.norm.ppf(1 - alpha, loc=mean, scale=std)
         st.success(f"Critical value: {crit:.4f}")
 
-# ---------------- t-distribution ----------------
 elif option == "t-distribution":
     st.header("t-Distribution")
     df = st.number_input("Degrees of freedom (df)", min_value=1, step=1)
@@ -39,8 +36,7 @@ elif option == "t-distribution":
         else:
             crit = stats.t.ppf(1 - alpha, df)
         st.success(f"Critical value (t): {crit:.4f}")
-
-# ---------------- Chi-squared distribution ----------------
+        
 elif option == "Chi-squared distribution":
     st.header("Chi-squared Distribution")
     df = st.number_input("Degrees of freedom (df)", min_value=1, step=1)
@@ -50,7 +46,6 @@ elif option == "Chi-squared distribution":
         crit = stats.chi2.ppf(1 - alpha, df)
         st.success(f"Critical value (Chi²): {crit:.4f}")
 
-# ---------------- F-distribution ----------------
 elif option == "F-distribution":
     st.header("F-Distribution")
     df1 = st.number_input("Numerator df (df1)", min_value=1, step=1)
@@ -61,7 +56,6 @@ elif option == "F-distribution":
         crit = stats.f.ppf(1 - alpha, df1, df2)
         st.success(f"Critical value (F): {crit:.4f}")
 
-# ---------------- Durbin-Watson ----------------
 elif option == "Durbin-Watson statistic":
     st.header("Durbin-Watson Statistic")
     st.write("Input residuals separated by commas, e.g., 1, -0.5, 0.3")
